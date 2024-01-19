@@ -22,9 +22,10 @@ const itemSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  images: [{
-    type: String
-  }]
+  image: {
+    type: Array,
+    required: true
+}
 });
 
 const Item = mongoose.model('Item', itemSchema);

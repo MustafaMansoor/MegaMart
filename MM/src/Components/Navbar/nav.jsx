@@ -13,8 +13,8 @@ export default function Nav(props) {
 
   return (
     <nav className="navbar navbar-expand-lg fixed-top custom-navbar">
-      <Link className="navbar-brand ms-2 fs-3 custom-brand" to="/">
-        <strong>Mega Mart</strong>
+      <Link className="navbar-brand ms-2 fs-3" to="/">
+        <strong  style={{ color: 'white'}}>Mega Mart</strong>
       </Link>
       <button
         className="navbar-toggler"
