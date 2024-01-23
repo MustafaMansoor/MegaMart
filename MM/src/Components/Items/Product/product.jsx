@@ -3,6 +3,10 @@ import './product.css';
 import './Content/input.css';
 import SlideShow from './slideShow/slideShow';
 import Input from './Content/input';
+import ItemName from './Content/itemName';
+import Description from './Content/description';
+import Price from './Content/price';
+import ADDCARTBTN from './Content/addToCartBtn';
 const Product = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -14,12 +18,16 @@ const Product = () => {
   const price = new URLSearchParams(location.search).get('price');
 
   return (
-    <div className="product-container">
+    <div className="product-container" >
       <div className="image-container">
         <SlideShow images={images} />
       </div>
       <div className="details-container">
+        <ItemName itemName={name}/>
        <Input/>
+       <Description description={description}/>
+       <Price price={price}/>
+       <ADDCARTBTN/>
       </div>
     </div>
   );

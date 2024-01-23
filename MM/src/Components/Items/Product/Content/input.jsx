@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import './input.css'
 export default function Input() {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(20);
+  const [alert, setAlert] = useState({show: false, message: ''});
 
   const handleIncrease = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
+    setAlert({show: false, message: ''});
   };
 
   const handleDecrease = () => {
-    if (quantity > 1) {
+    if (quantity > 20) {
       setQuantity(prevQuantity => prevQuantity - 1);
+    } else {
+      setAlert({show: true, message: 'Quantity cannot be less than 20'});
     }
   };
 
@@ -17,21 +21,27 @@ export default function Input() {
     const value = event.target.value;
     if (value !== '' && !isNaN(value)) {
       setQuantity(Number(value));
+      setAlert({show: false, message: ''});
     }
   };
 
   return (
+    <>
+
+
+<div className='set-quantity'>
+      <h6>Quantity</h6>
+</div>
+
+
     <div className='set-input'>
-      <h5>Q U A N T I T Y</h5>
-      
       <button onClick={handleDecrease}>-</button>
-      <input
-        type="text"
-        value={quantity}
-        onChange={handleChange}
-        pattern="[0-9]*"
-      />
+      <input type="text" value={quantity} onChange={handleChange} pattern="\d*" />
       <button onClick={handleIncrease}>+</button>
-    </div>
-  );
+      </div>
+      <div className='set-alert'>
+        {alert.show && <div className="alert alert-dark" role="alert">{alert.message}</div>}
+        </div>
+        </>
+  )
 }

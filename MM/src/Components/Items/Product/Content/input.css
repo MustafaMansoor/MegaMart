@@ -25,3 +25,17 @@
     box-sizing: border-box;
     width: 8vh;
   }
+
+  .set-alert{
+    margin-top: 10px;
+    width: 50vh;
+  }
+.set-quantity {
+  margin-top: 10px;
+  text-transform: uppercase;
+    letter-spacing: .3em;
+    font-size: .8em;
+    display: block;
+    margin-bottom: 20px;
+
+}
