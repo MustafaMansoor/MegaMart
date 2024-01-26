@@ -32,7 +32,6 @@ export default function Index() {
               price={product.price}
               images={product.images}
               description={product.description}
-              quantity={product.quantity}
             />
           </div>
         ))}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './input.css'
-export default function Input() {
-  const [quantity, setQuantity] = useState(20);
+export default function Input({quantity, setQuantity}) {
   const [alert, setAlert] = useState({show: false, message: ''});
 
   const handleIncrease = () => {

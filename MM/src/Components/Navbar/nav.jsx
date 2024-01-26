@@ -14,7 +14,7 @@ export default function Nav(props) {
   return (
     <nav className="navbar navbar-expand-lg fixed-top custom-navbar">
       <Link className="navbar-brand ms-2 fs-3" to="/">
-        <strong  style={{ color: 'white'}}>Mega Mart</strong>
+        <strong style={{ color: "white" }}>Mega Mart</strong>
       </Link>
       <button
         className="navbar-toggler"
@@ -46,10 +46,12 @@ export default function Nav(props) {
               </div>
             </form>
           </li>
-          <li className="nav-item">
-            <Link to="/cart" className="nav-link">
-            <i className="fas fa-shopping-cart" style={{ color: 'white',marginRight:'5px' }}></i> <span style={{ color: 'white' }}></span>
-            </Link>
+          <li className="nav-item" onClick={props.toggleCart}>
+            <i
+              className="fas fa-shopping-cart"
+              style={{ color: "white", marginRight: "10px",marginTop:"10px" }}
+            ></i>
+            <span style={{ color: "white" }}></span>
           </li>
         </ul>
       </div>

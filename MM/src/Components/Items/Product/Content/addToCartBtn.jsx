@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-export default function addToCartBtn() {
+const AddToCartBtn = ({ itemName, price, selectedQuantity, addToCart }) => {
+  const handleAddToCart = () => {
+    addToCart({ name: itemName, price, quantity: selectedQuantity });
+  };
+
   return (
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <button type="button" className="btn btn-dark">Add to Cart</button>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <button type="button" className="btn btn-dark" onClick={handleAddToCart}>
+        Add to Cart
+      </button>
     </div>
-  )
-}
+  );
+};
+
+export default AddToCartBtn;

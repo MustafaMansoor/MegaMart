@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import './items.css';
 
 export default function ItemCard(props) {
-  const { itemName, price, images, productId,description,quantity } = props;
+  const { itemName, price, images, productId,description} = props;
   const [hoverIndex, setHoverIndex] = useState(0);
   const navigate = useNavigate();
 
   const handleCardClick = () => {
     const encodedImages = encodeURIComponent(JSON.stringify(images));
    
-    navigate(`/product/${productId}?itemName=${encodeURIComponent(itemName)}&price=${encodeURIComponent(price)}&description=${encodeURIComponent(description)}&images=${encodedImages}&quantity=${encodeURIComponent(quantity)}`);
+    navigate(`/product/${productId}?itemName=${encodeURIComponent(itemName)}&price=${encodeURIComponent(price)}&description=${encodeURIComponent(description)}&images=${encodedImages}`);
   };
   
   
