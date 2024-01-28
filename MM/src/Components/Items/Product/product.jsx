@@ -32,6 +32,7 @@ const Product = ({ addToCart }) => {
           price={price}
           selectedQuantity={selectedQuantity}
           addToCart={addToCart}
+          images={images}
         />
       </div>
     </div>

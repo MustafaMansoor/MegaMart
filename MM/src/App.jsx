@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Navbar from "./Components/Navbar/nav";
 import Items from "./Components/Items/index";
 import Product from "./Components/Items/Product/product";
-import Cart from "./Components/Tabs/cart";
+import Cart from "./Components/Tabs/cartComponents/cart";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

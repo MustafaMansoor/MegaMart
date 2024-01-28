@@ -1,6 +1,6 @@
 import React from "react";
 import "./Cart.css";
-
+import ItemCard from "./itemcard"
 export default function Cart({ isOpen, toggleCart, items }) {
   if (!isOpen) {
     return null;
@@ -15,7 +15,13 @@ export default function Cart({ isOpen, toggleCart, items }) {
           <ul>
             {items.map((item, index) => (
               <li key={index}>
-                {item.name} - ${item.price} - Quantity: {item.quantity}
+                <ItemCard 
+                name={item.name}
+                price={item.price}
+                quantity={item.quantity}
+                images={item.images}
+                
+                />
               </li>
             ))}
           </ul>
