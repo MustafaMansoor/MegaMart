@@ -4,6 +4,8 @@ import ItemCard from "./itemcard"
 export default function Cart({ isOpen, toggleCart, items }) {
   if (!isOpen) {
     return null;
+
+    
   }
 
   return (
