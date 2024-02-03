@@ -1,32 +1,38 @@
 import React from "react";
+import { useState } from "react";
 import "./Cart.css";
-import ItemCard from "./itemcard"
-export default function Cart({ isOpen, toggleCart, items }) {
+import ItemCard from "./itemCart";
+
+export default function Cart({ isOpen, toggleCart, items, removeFromCart, updateCartQuantity }) {
+  const [quantity, setQuantity] = useState(1);
+
   if (!isOpen) {
     return null;
-
-    
   }
+
+  const total = items.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
 
   return (
     <>
       <div className="cart-backdrop" onClick={toggleCart} />
       <div className="cart-panel">
-        <h3>Cart Panel Content</h3>
         {items.length > 0 ? (
-          <ul>
-            {items.map((item, index) => (
-              <li key={index}>
-                <ItemCard 
-                name={item.name}
-                price={item.price}
-                quantity={item.quantity}
-                images={item.images}
-                
-                />
-              </li>
-            ))}
-          </ul>
+          <>
+            <ol>
+              {items.map((item, index) => (
+                <li key={index}>
+                  <ItemCard
+                    item={item}
+                    removeFromCart={removeFromCart}
+                    updateCart={updateCartQuantity}
+                  />
+                </li>
+              ))}
+            </ol>
+            <p>Total Price: R S.{total}</p>
+          </>
         ) : (
           <p>Your cart is empty.</p>
         )}

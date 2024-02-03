@@ -1,9 +1,12 @@
 require('dotenv').config();
+const cors = require('cors');
 require('express-async-errors');
 
 const express = require('express');
 const app = express();
 
+
+app.use(cors());
 const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({

@@ -24,7 +24,18 @@ const Product = ({ addToCart }) => {
       </div>
       <div className="details-container">
         <ItemName itemName={name} />
-        <Input quantity={selectedQuantity} setQuantity={setQuantity} />
+        <Input 
+        quantity={selectedQuantity} 
+        setQuantity={setQuantity}
+         alertStyles={{ position: 'fixed',
+          top: 0,
+           left: 0,
+          width: '100%', 
+          color: 'white',
+          textAlign: 'center',
+          zIndex: 999,
+          marginTop: '55px'}}
+        />
         <Description description={description} />
         <Price price={price} />
         <AddToCartBtn

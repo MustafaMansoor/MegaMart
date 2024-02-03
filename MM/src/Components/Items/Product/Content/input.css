@@ -25,11 +25,6 @@
     box-sizing: border-box;
     width: 8vh;
   }
-
-  .set-alert{
-    margin-top: 10px;
-    width: 50vh;
-  }
 .set-quantity {
   margin-top: 10px;
   text-transform: uppercase;

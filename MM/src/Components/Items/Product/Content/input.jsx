@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
-import './input.css'
-export default function Input({quantity, setQuantity}) {
-  const [alert, setAlert] = useState({show: false, message: ''});
+import React, { useState } from 'react';
+import './input.css';
+
+export default function Input({ quantity, setQuantity, alertStyles }) {
+  const [alert, setAlert] = useState({ show: false, message: '' });
 
   const handleIncrease = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
-    setAlert({show: false, message: ''});
+    setAlert({ show: false, message: '' });
   };
 
   const handleDecrease = () => {
     if (quantity > 20) {
       setQuantity(prevQuantity => prevQuantity - 1);
     } else {
-      setAlert({show: true, message: 'Quantity cannot be less than 20'});
+      setAlert({ show: true, message: 'Quantity cannot be less than 20' });
+      setTimeout(() => {
+        setAlert({ show: false, message: '' });
+      }, 2000);
     }
   };
 
@@ -20,27 +24,23 @@ export default function Input({quantity, setQuantity}) {
     const value = event.target.value;
     if (value !== '' && !isNaN(value)) {
       setQuantity(Number(value));
-      setAlert({show: false, message: ''});
+      setAlert({ show: false, message: '' });
     }
   };
 
   return (
     <>
-
-
-<div className='set-quantity'>
-      <h6>Quantity</h6>
-</div>
-
-
-    <div className='set-input'>
-      <button onClick={handleDecrease}>-</button>
-      <input type="text" value={quantity} onChange={handleChange} pattern="\d*" />
-      <button onClick={handleIncrease}>+</button>
+      <div className='set-quantity'>
+        <h6>Quantity</h6>
       </div>
-      <div className='set-alert'>
+      <div className='set-input'>
+        <button onClick={handleDecrease}>-</button>
+        <input type="text" value={quantity} onChange={handleChange} pattern="\d*" />
+        <button onClick={handleIncrease}>+</button>
+      </div>
+      <div style={alertStyles}>
         {alert.show && <div className="alert alert-dark" role="alert">{alert.message}</div>}
-        </div>
-        </>
-  )
+      </div>
+    </>
+  );
 }
