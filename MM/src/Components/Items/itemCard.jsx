@@ -11,7 +11,6 @@ export default function ItemCard(props) {
 
   const handleCardClick = () => {
     const encodedImages = encodeURIComponent(JSON.stringify(images));
-   
     navigate(`/product/${productId}?itemName=${encodeURIComponent(itemName)}&price=${encodeURIComponent(price)}&description=${encodeURIComponent(description)}&images=${encodedImages}`);
   };
   

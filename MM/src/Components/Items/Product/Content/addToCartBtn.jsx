@@ -1,8 +1,8 @@
 import React from 'react';
 
-const AddToCartBtn = ({ itemName, price, selectedQuantity, addToCart,images }) => {
+const AddToCartBtn = ({ id,itemName, price, selectedQuantity, addToCart,images }) => {
   const handleAddToCart = () => {
-    addToCart({ name: itemName, price, quantity: selectedQuantity,images });
+    addToCart({ id:id, name: itemName, price, quantity: selectedQuantity,images });
   };
 
   return (

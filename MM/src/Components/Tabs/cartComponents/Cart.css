@@ -8,6 +8,11 @@
     z-index: 999;
   }
   
+  
+  .section-divider {
+    width: 100%; 
+    margin: 10px 0; 
+  }
   .cart-panel {
     position: fixed;
     top: 50%;

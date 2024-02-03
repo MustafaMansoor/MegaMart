@@ -1,16 +1,15 @@
 import React from "react";
-import { useState } from "react";
 import "./Cart.css";
 import ItemCard from "./itemCart";
+import Checkout from "./Checkout";
 
 export default function Cart({ isOpen, toggleCart, items, removeFromCart, updateCartQuantity }) {
-  const [quantity, setQuantity] = useState(1);
-
   if (!isOpen) {
     return null;
   }
 
   const total = items.reduce((acc, item) => {
+
     return acc + item.price * item.quantity;
   }, 0);
 
@@ -20,18 +19,23 @@ export default function Cart({ isOpen, toggleCart, items, removeFromCart, update
       <div className="cart-panel">
         {items.length > 0 ? (
           <>
-            <ol>
-              {items.map((item, index) => (
-                <li key={index}>
-                  <ItemCard
-                    item={item}
-                    removeFromCart={removeFromCart}
-                    updateCart={updateCartQuantity}
-                  />
-                </li>
-              ))}
-            </ol>
-            <p>Total Price: R S.{total}</p>
+            {items.map((item, index) => (
+              <ItemCard
+                key={index}
+                item={item}
+                removeFromCart={removeFromCart}
+                updateCart={updateCartQuantity}
+              />
+            ))}
+            <hr className="section-divider" />
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <p>Total Price: RS.</p>
+              <p>{total}</p>
+            </div>
+            
+            <div style={{display:"flex",justifyContent:"space-around"}}>
+            <Checkout />
+            </div>
           </>
         ) : (
           <p>Your cart is empty.</p>

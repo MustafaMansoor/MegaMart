@@ -10,10 +10,12 @@ export default function ItemCard({ item, removeFromCart, updateCart }) {
   };
 
   const handleQuantityChange = (newQuantity) => {
-    setQuantity(newQuantity);
-    {console.log(quantity, newQuantity)};
+    setQuantity(newQuantity); 
     updateCart({ ...item, quantity: quantity });
   };
+  
+  
+  
 
   const totalPrice = item.price * quantity;
 
@@ -42,8 +44,7 @@ export default function ItemCard({ item, removeFromCart, updateCart }) {
           zIndex: 999}}
         />
       </div>
-      <hr className="section-divider" />
-      <p className="item-total-price">Total: R&nbsp;S.{totalPrice}</p>
+      <p className="item-total-price">Total: RS.{totalPrice}</p>
       <span className="fav-icon">
         <i className="fa-solid fa-x" onClick={handleRemoveItem}></i>
       </span>

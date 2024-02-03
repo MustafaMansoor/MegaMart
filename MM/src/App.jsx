@@ -4,6 +4,7 @@ import Items from "./Components/Items/index";
 import Product from "./Components/Items/Product/product";
 import Cart from "./Components/Tabs/cartComponents/cart";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Checkout from "./Components/Tabs/cartComponents/Checkout";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -16,7 +17,7 @@ function App() {
   const addToCart = (item) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((prevItem) => prevItem.id === item.id);
-  
+
       if (existingItem) {
         return prevItems.map((prevItem) =>
           prevItem.id === item.id
@@ -45,13 +46,10 @@ function App() {
   }
 
   const removeFromCart = (itemId) => {
-    console.log("Item ID to be removed:", itemId);
     setCartItems((prevItems) => {
       const updatedItems = prevItems.filter((prevItem) => {
-        console.log("Comparing:", prevItem.id, itemId);
         return prevItem.id !== itemId;
       });
-      console.log("Updated items after removal:", updatedItems);
       return updatedItems;
     });
   };
@@ -67,8 +65,12 @@ function App() {
             element={<Items/>}
           />
           <Route
-            path="/product/:id"
+            path="/product/:productId"
             element={<Product addToCart={addToCart}  />}
+          />
+          <Route
+            path="/Checkout/"
+            element={<Checkout/>}
           />
         </Routes>
       </div>

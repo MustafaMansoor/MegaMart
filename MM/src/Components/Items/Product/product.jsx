@@ -9,7 +9,8 @@ import AddToCartBtn from './Content/addToCartBtn';
 import './product.css';
 
 const Product = ({ addToCart }) => {
-  const { id } = useParams();
+  
+  const { productId } = useParams();
   const location = useLocation();
   const images = JSON.parse(new URLSearchParams(location.search).get('images'));
   const description = new URLSearchParams(location.search).get('description');
@@ -19,6 +20,7 @@ const Product = ({ addToCart }) => {
 
   return (
     <div className="product-container">
+      
       <div className="image-container">
         <SlideShow images={images} />
       </div>
@@ -39,6 +41,7 @@ const Product = ({ addToCart }) => {
         <Description description={description} />
         <Price price={price} />
         <AddToCartBtn
+        id={productId}
           itemName={name}
           price={price}
           selectedQuantity={selectedQuantity}

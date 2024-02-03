@@ -24,9 +24,10 @@ export default function Index() {
     <div className="container">
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {products.map((product) => (
-          <div className="col mb-4" key={product.itemId}>
+          <div className="col mb-4" key={product._id}>
+            
             <ItemCard
-            productId={product.itemId}
+            productId={product._id}
               itemName={product.itemName}
               price={product.price}
               images={product.images}
