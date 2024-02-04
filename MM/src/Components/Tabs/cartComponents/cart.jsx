@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cart.css";
 import ItemCard from "./itemCart";
-import Checkout from "./Checkout";
+import CheckButton from "../CheckOut/CheckoutButton";
 
 export default function Cart({ isOpen, toggleCart, items, removeFromCart, updateCartQuantity }) {
   if (!isOpen) {
@@ -34,7 +34,7 @@ export default function Cart({ isOpen, toggleCart, items, removeFromCart, update
             </div>
             
             <div style={{display:"flex",justifyContent:"space-around"}}>
-            <Checkout />
+            <CheckButton price={total}/>
             </div>
           </>
         ) : (

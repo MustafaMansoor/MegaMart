@@ -4,7 +4,7 @@ import Items from "./Components/Items/index";
 import Product from "./Components/Items/Product/product";
 import Cart from "./Components/Tabs/cartComponents/cart";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Checkout from "./Components/Tabs/cartComponents/Checkout";
+import Checkout from "./Components/Tabs/CheckOut/Index";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -68,10 +68,7 @@ function App() {
             path="/product/:productId"
             element={<Product addToCart={addToCart}  />}
           />
-          <Route
-            path="/Checkout/"
-            element={<Checkout/>}
-          />
+          <Route path="/checkout/:price" element={<Checkout items={cartItems} />} />
         </Routes>
       </div>
       <Cart isOpen={isCartOpen} toggleCart={toggleCart}

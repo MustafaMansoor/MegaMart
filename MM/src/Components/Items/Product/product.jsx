@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import SlideShow from './slideShow/slideShow';
 import Input from './Content/input';
 import ItemName from './Content/itemName';
