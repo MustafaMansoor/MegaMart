@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from "react";
 import Navbar from "./Components/Navbar/nav";
 import Items from "./Components/Items/index";
@@ -29,6 +30,7 @@ function App() {
       }
     });
   };
+
   const updateCart = (item) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((prevItem) => prevItem.id === item.id);
@@ -68,7 +70,7 @@ function App() {
             path="/product/:productId"
             element={<Product addToCart={addToCart}  />}
           />
-          <Route path="/checkout/:price" element={<Checkout items={cartItems} />} />
+          <Route path="/checkout/:price" element={<Checkout cartItems={cartItems} />} />
         </Routes>
       </div>
       <Cart isOpen={isCartOpen} toggleCart={toggleCart}
