@@ -7,8 +7,7 @@ export default function Nav(props) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const searchTerm = formData.get("search");
-    console.log("Search Term:", searchTerm);
-    props.Item(searchTerm);
+    props.SearchItem(searchTerm);
   };
 
   return (

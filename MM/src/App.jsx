@@ -10,6 +10,7 @@ function InnerApp() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const location = useLocation();
+  const [searchItem, SetSearchItem] = useState("");
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -66,10 +67,12 @@ function InnerApp() {
 
   return (
     <>
-      <Navbar toggleCart={toggleCart} />
+      <Navbar toggleCart={toggleCart} SearchItem={SetSearchItem}/>
+      
       <div style={{ marginTop: "100px" }}>
         <Routes>
-          <Route path="/" element={<Items />} />
+          {/* {console.log(searchItem)} */}
+          <Route path="/" element={<Items SearchItem={searchItem}/>} />
           <Route path="/product/:productId" element={<Product addToCart={addToCart} />} />
           <Route path="/checkout/:price" element={<Checkout cartItems={cartItems} removeAllFromCart={removeAllFromCart} />} />
         </Routes>
