@@ -11,7 +11,7 @@ export default function ItemCard({ item, removeFromCart, updateCart }) {
 
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity); 
-    updateCart({ ...item, quantity: quantity });
+    updateCart({ ...item, quantity: newQuantity });
   };
   
   

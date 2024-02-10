@@ -1,24 +1,14 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import ItemCard from "./itemCart";
 import CheckButton from "../CheckOut/CheckoutButton";
 
 export default function Cart({ isOpen, toggleCart, items, removeFromCart, updateCartQuantity }) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const unlisten = history.listen(() => {
-      // Close the cart when the page changes
-      if (isOpen) {
-        toggleCart();
-      }
-    });
-
-    return () => {
-      unlisten(); // Cleanup the listener when the component unmounts
-    };
-  }, [history, isOpen, toggleCart]);
+  }, [isOpen, toggleCart]);
 
   if (!isOpen) {
     return null;

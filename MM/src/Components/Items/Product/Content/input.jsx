@@ -5,13 +5,13 @@ export default function Input({ quantity, setQuantity, alertStyles }) {
   const [alert, setAlert] = useState({ show: false, message: '' });
 
   const handleIncrease = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+    setQuantity(quantity+1);
     setAlert({ show: false, message: '' });
   };
 
   const handleDecrease = () => {
     if (quantity > 20) {
-      setQuantity(prevQuantity => prevQuantity - 1);
+      setQuantity(quantity-1);
     } else {
       setAlert({ show: true, message: 'Quantity cannot be less than 20' });
       setTimeout(() => {
@@ -35,7 +35,7 @@ export default function Input({ quantity, setQuantity, alertStyles }) {
       </div>
       <div className='set-input'>
         <button onClick={handleDecrease}>-</button>
-        <input type="text" value={quantity} onChange={handleChange} pattern="\d*" />
+        <input type="number" value={quantity} onChange={handleChange} pattern="\d*" />
         <button onClick={handleIncrease}>+</button>
       </div>
       <div style={alertStyles}>

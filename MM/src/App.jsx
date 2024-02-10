@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Components/Navbar/nav";
 import Items from "./Components/Items/index";
 import Product from "./Components/Items/Product/product";
@@ -6,7 +6,7 @@ import Cart from "./Components/Tabs/cartComponents/cart";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Checkout from "./Components/Tabs/CheckOut/Index";
 
-function App() {
+function InnerApp() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const location = useLocation();
@@ -60,31 +60,29 @@ function App() {
     setCartItems([]);
   };
 
-  // Close the cart when the location changes
-  React.useEffect(() => {
+  useEffect(() => {
     setIsCartOpen(false);
   }, [location]);
 
   return (
-    <Router>
+    <>
       <Navbar toggleCart={toggleCart} />
       <div style={{ marginTop: "100px" }}>
         <Routes>
-          <Route
-            path="/"
-            element={<Items/>}
-          />
-          <Route
-            path="/product/:productId"
-            element={<Product addToCart={addToCart}  />}
-          />
-          <Route path="/checkout/:price" element={<Checkout cartItems={cartItems}  removeAllFromCart={removeAllFromCart}/>} />
+          <Route path="/" element={<Items />} />
+          <Route path="/product/:productId" element={<Product addToCart={addToCart} />} />
+          <Route path="/checkout/:price" element={<Checkout cartItems={cartItems} removeAllFromCart={removeAllFromCart} />} />
         </Routes>
       </div>
-      <Cart isOpen={isCartOpen} toggleCart={toggleCart}
-       items={cartItems}
-      removeFromCart={removeFromCart} 
-      updateCartQuantity={updateCart}/>
+      <Cart isOpen={isCartOpen} toggleCart={toggleCart} items={cartItems} removeFromCart={removeFromCart} updateCartQuantity={updateCart} />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <InnerApp />
     </Router>
   );
 }
