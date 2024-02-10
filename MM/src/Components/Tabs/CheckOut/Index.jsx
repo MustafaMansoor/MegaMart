@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios'; // Import axios
 import './index.css';
 
-export default function Checkout({ cartItems }) {
+export default function Checkout({ cartItems,removeAllFromCart }) {
   const { price } = useParams();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -12,36 +13,31 @@ export default function Checkout({ cartItems }) {
     event.preventDefault();
     const orderData = {
       products: cartItems.map((item) => ({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: item.quantity
+        itemId: item.id,
+        itemName: item.name,
+        quantity: item.quantity,
+        price: item.price
       })),
       user: { name, email, address },
-      status: 'Pending',
-      totalPrice: price
+      totalPrice: parseInt(price) 
     };
-    
+  
     try {
-      const response = await fetch('/api/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(orderData)
-      });
+      const response = await axios.post('http://localhost:5000/api/orders', orderData);
       
-      if (response.ok) {
+      if (response.status === 201) {
         alert('Order placed successfully');
+        removeAllFromCart();
       } else {
         alert('Failed to place order');
-        
       }
     } catch (error) {
       console.error('Error:', error);
+      alert('Failed to place order');
     }
   };
-
+  
+  
   return (
     <div className="order-form">
       <h2 style={{textAlign:'center', marginBottom: "20px "}}>Order Details</h2>
