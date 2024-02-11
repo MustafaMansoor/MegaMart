@@ -23,6 +23,9 @@ const productRouter = require('./routes/productRoutes');
 //order router
 const orderRouter = require('./routes/orderRoutes');
 
+//category router
+const categoryRouter = require('./routes/categoryRoutes');
+
 // error handler
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
@@ -38,6 +41,8 @@ app.get('/', (req, res) => {
 app.use('/api/orders', orderRouter);
 
 app.use('/api/products', productRouter);
+
+app.use('/api/categories', categoryRouter);
 // middleware
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
