@@ -1,0 +1,4 @@
+1) alert signin/signup page 
+2) forgot password implement email api validation
+3) cart and card mouse movement
+4) on cart icon a number should be shown indicating the num of items
